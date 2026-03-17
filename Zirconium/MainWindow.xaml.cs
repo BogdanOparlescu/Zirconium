@@ -22,9 +22,10 @@ namespace Zirconium
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            _Debug.Text = ApiKeys.Groq();
+            //_Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
+            _Debug.Text = await new Zirconium.Agents.CerebrasAgent("gpt-oss-120b").Ask("1234 + 4321?");
         }
     }
 }

@@ -2,13 +2,15 @@
 using System.Text;
 using System.Text.Json;
 
-namespace Zirconium;
+namespace Zirconium.Agents;
 
-public class Groq
+public class Agent
 {
     private string key = string.Empty;
+    protected string max_tokens_alias = string.Empty;
+    protected string endpoint = string.Empty;
 
-    public Groq(string key)
+    public Agent(string key)
     {
         this.key = key;
     }
@@ -30,7 +32,7 @@ public class Groq
         },
             ["model"] = model,
             ["temperature"] = 1,
-            ["max_completion_tokens"] = max_output_tokens,
+            [max_tokens_alias] = max_output_tokens,
             ["top_p"] = 1,
             ["stream"] = false,
             ["reasoning_effort"] = reasoning_effort,
@@ -52,7 +54,7 @@ public class Groq
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
         var response = await http.PostAsync(
-            "https://api.groq.com/openai/v1/chat/completions",
+            endpoint,
             content
         );
 
