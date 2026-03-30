@@ -1,4 +1,4 @@
-﻿namespace Zirconium.CodeScanners;
+﻿namespace Zirconium.Scanners;
 
 public interface Tool : IDisposable
 {

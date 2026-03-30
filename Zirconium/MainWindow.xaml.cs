@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zirconium.Scanners.CodeScanners;
 
 namespace Zirconium
 {
@@ -27,12 +28,6 @@ namespace Zirconium
             //_Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
             //_Debug.Text = await new Zirconium.Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
 
-            MemoryTable mt = new MemoryTable("Blues", new string[] { "Name", "Age" });
-            mt.Insert(new string[] { "Andrew", "12" });
-            mt.Insert(new string[] { "Bob", "34" });
-            mt.Insert(new string[] { "Alice", "36" });
-            mt = mt.Query($"SELECT * FROM {mt.name} WHERE Age > 30");
-            _Debug.Text = mt.ToString();
         }
     }
 }
