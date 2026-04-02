@@ -28,6 +28,17 @@ namespace Zirconium
             //_Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
             //_Debug.Text = await new Zirconium.Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
 
+            //Bandit bandit = new Bandit();
+            //bandit.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
+            //_Debug.Text = bandit.scan_out;
+
+            //Trufflehog trufflehog = new Trufflehog();
+            //trufflehog.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
+            //_Debug.Text = trufflehog.scan_out;
+
+            Trivy trivy = new Trivy();
+            trivy.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
+            _Debug.Text = trivy.scan_out;
         }
     }
 }

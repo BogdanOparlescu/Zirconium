@@ -5,7 +5,7 @@ public abstract class CodeScanner : Tool
     public string Name { get; }
     public string Description { get; }
     public string ObtainingSource { get; }
-    public enum CodeLanguage { C, Cpp, Python}
+    public enum CodeLanguage { C=1, Cpp=2, Python=4}
     public IReadOnlyCollection<CodeLanguage> SupportedLanguages { get; }
     public MemoryTable ScanResults = null!; //Change this
 
