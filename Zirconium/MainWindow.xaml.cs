@@ -37,8 +37,8 @@ namespace Zirconium
             //_Debug.Text = trufflehog.scan_out;
 
             Trivy trivy = new Trivy();
-            trivy.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
-            _Debug.Text = trivy.scan_out;
+            //trivy.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
+            _Debug.Text = trivy.Version() + trivy.VerifyInstall();
         }
     }
 }

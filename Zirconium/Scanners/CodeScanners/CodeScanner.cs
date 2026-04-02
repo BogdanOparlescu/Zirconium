@@ -20,10 +20,22 @@ public abstract class CodeScanner : Tool
 
 
     public virtual void Dispose() => ScanResults.Dispose();
+    public bool Supports(CodeLanguage language) => SupportedLanguages.Contains(language);
 
-    public abstract bool VerifyInstall();
+    public virtual string Version() => Commander.RunProcess(Name, "--version").stdout;
+
+    public virtual bool VerifyInstall()
+    {
+        try
+        {
+            return Commander.RunProcess(Name, "--version").exitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
+    }
 
     public abstract void Scan(object scan);
 
-    public bool Supports(CodeLanguage language) => SupportedLanguages.Contains(language);
 }

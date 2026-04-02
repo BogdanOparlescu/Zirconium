@@ -7,4 +7,6 @@ public interface Tool : IDisposable
     string ObtainingSource { get; }
 
     bool VerifyInstall();
+
+    string Version();
 }

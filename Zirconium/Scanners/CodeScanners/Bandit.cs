@@ -1,11 +1,9 @@
-﻿using System.Diagnostics;
-
-namespace Zirconium.Scanners.CodeScanners;
+﻿namespace Zirconium.Scanners.CodeScanners;
 
 public class Bandit : CodeScanner
 {
     public Bandit() : base(
-        "Bandit",
+        "bandit",
         "Python Code Scanner",
         "pip install bandit",
         new List<CodeLanguage>() { CodeLanguage.Python }
@@ -15,47 +13,9 @@ public class Bandit : CodeScanner
     public string scan_out = string.Empty;
     public override void Scan(object scan_path)
     {
-        var process = new Process();
-        process.StartInfo.FileName = "bandit";
-        process.StartInfo.Arguments = $"-r {scan_path} --format custom --msg-template \"{{abspath}}:{{line}}: {{test_id}}[bandit]: {{severity}}: {{msg}}\"";
-        process.StartInfo.RedirectStandardOutput = true;
-        process.StartInfo.UseShellExecute = false;
-        process.StartInfo.CreateNoWindow = true;
-
-        process.Start();
-
-        scan_out = process.StandardOutput.ReadToEnd();
-    }
-
-    public override bool VerifyInstall()
-    {
-        try
-        {
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "bandit",
-                    Arguments = "--version",
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true
-                }
-            };
-
-            process.Start();
-
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-
-            process.WaitForExit();
-
-            return process.ExitCode == 0;
-        }
-        catch
-        {
-            return false;
-        }
+        scan_out = Commander.RunProcess(
+            Name, 
+            $"-r {scan_path} --format custom --msg-template \"{{abspath}}:{{line}}: {{test_id}}[bandit]: {{severity}}: {{msg}}\""
+            ).stdout;
     }
 }
