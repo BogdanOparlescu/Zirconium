@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Zirconium.Tools.CodeScanners.Bandit" Collapsed="true">
+    <Position X="5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Tools\CodeScanners\Bandit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Tools.CodeScanners.CodeScanner" Collapsed="true">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Tools\CodeScanners\CodeScanner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Tools.CodeScanners.Trufflehog" Collapsed="true">
+    <Position X="6.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Tools\CodeScanners\Trufflehog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Tools.Recon.ReconTool" Collapsed="true">
+    <Position X="8.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAACAiAAAAAAAAAAQAAAABAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Tools\Recon\ReconTool.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Zirconium.Tools.Commander" Collapsed="true">
+    <Position X="11.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Tools\Commander.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Tools.Scanner" Collapsed="true">
+    <Position X="6.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAACIiAAAAAAAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Tools\Scanner.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Zirconium.ApiKeys" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ApiKeys.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Config" Collapsed="true">
+    <Position X="11.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Agents.Agent" Collapsed="true">
+    <Position X="1.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAQAAAAAAEAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Agents\Agent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Agents.CerebrasAgent" Collapsed="true">
+    <Position X="2.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAIAAAAAAAAAAQAAAAAAIAAAKAAA=</HashCode>
+      <FileName>Agents\CerebrasAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Agents.GroqAgent" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAIAAAAAAAAAAQAAAAAAIAAAKAAA=</HashCode>
+      <FileName>Agents\GroqAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zirconium.Tools.CodeScanners.Trivy" Collapsed="true">
+    <Position X="8.5" Y="6.5" Width="1.5" />
+    <InheritanceLine Type="Zirconium.Tools.CodeScanners.CodeScanner" FixedFromPoint="true">
+      <Path>
+        <Point X="7.5" Y="5.941" />
+        <Point X="7.5" Y="6.2" />
+        <Point X="9.25" Y="6.2" />
+        <Point X="9.25" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Tools\CodeScanners\Trivy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Zirconium.Tools.Tool" Collapsed="true">
+    <Position X="6.75" Y="2" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAiAAAAAAAAAAQAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Tools\Tool.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

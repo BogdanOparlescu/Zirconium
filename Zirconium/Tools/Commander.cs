@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Zirconium.Scanners;
+namespace Zirconium.Tools;
 
 public static class Commander
 {

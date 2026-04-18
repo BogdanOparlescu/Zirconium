@@ -25,8 +25,8 @@ namespace Zirconium
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            //_Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
-            //_Debug.Text = await new Zirconium.Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
+            _Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
+            _Debug.Text = await new Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
 
             //Bandit bandit = new Bandit();
             //bandit.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
@@ -34,11 +34,11 @@ namespace Zirconium
 
             //Trufflehog trufflehog = new Trufflehog();
             //trufflehog.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
-            //_Debug.Text = trufflehog.scan_out;
+            //_Debug.Text = trufflehog.Version();
 
-            Trivy trivy = new Trivy();
+            //Trivy trivy = new Trivy();
             //trivy.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
-            _Debug.Text = trivy.Version() + trivy.VerifyInstall();
+            //_Debug.Text = trivy.Version() + trivy.VerifyInstall();
         }
     }
 }

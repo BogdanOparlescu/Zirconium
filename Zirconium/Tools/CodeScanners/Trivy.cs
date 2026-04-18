@@ -1,4 +1,4 @@
-﻿namespace Zirconium.Scanners.CodeScanners;
+﻿namespace Zirconium.Tools.CodeScanners;
 
 public class Trivy : CodeScanner
 {
@@ -6,7 +6,7 @@ public class Trivy : CodeScanner
         "trivy",
         "Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues and hard-coded secrets",
         "github.com/aquasecurity/trivy/pkgs/container/trivy",
-        new List<CodeLanguage>() { CodeLanguage.C | CodeLanguage.Cpp | CodeLanguage.Python }
+        new[]{ "*" }
         )
     { }
 

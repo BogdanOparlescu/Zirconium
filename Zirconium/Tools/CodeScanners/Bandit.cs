@@ -1,4 +1,4 @@
-﻿namespace Zirconium.Scanners.CodeScanners;
+﻿namespace Zirconium.Tools.CodeScanners;
 
 public class Bandit : CodeScanner
 {
@@ -6,7 +6,7 @@ public class Bandit : CodeScanner
         "bandit",
         "Python Code Scanner",
         "pip install bandit",
-        new List<CodeLanguage>() { CodeLanguage.Python }
+        new[]{ "python" }
         )
     { }
 
