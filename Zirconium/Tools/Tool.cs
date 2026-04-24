@@ -1,6 +1,6 @@
 ﻿namespace Zirconium.Tools;
 
-public interface Tool : IDisposable
+public interface Tool
 {
     string Name { get; }
     string Description { get; }

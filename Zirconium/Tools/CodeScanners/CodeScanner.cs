@@ -10,5 +10,10 @@ public abstract class CodeScanner : Scanner
         SupportedLanguages = supportedLanguages.ToList().AsReadOnly();
     }
 
-    public bool Supports(string language) => SupportedLanguages.Contains(language);
+    public bool Supports(string language)
+    {
+        if(SupportedLanguages.Contains("*"))
+            return true;
+        return SupportedLanguages.Contains(language);
+    }
 }

@@ -9,7 +9,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Zirconium.Scanners.CodeScanners;
+using Zirconium.Tools.CodeScanners;
+using Zirconium.Tools.Recon;
 
 namespace Zirconium
 {
@@ -25,8 +26,8 @@ namespace Zirconium
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            _Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
-            _Debug.Text = await new Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
+            //_Debug.Text = $"{ApiKeys.Groq()} {ApiKeys.Cerebras()}";
+            //_Debug.Text = await new Agents.GroqAgent("openai/gpt-oss-120b").Ask(_Debug.Text);
 
             //Bandit bandit = new Bandit();
             //bandit.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
@@ -39,6 +40,12 @@ namespace Zirconium
             //Trivy trivy = new Trivy();
             //trivy.Scan("C:\\Users\\User\\Desktop\\z_tests\\vulpy-master");
             //_Debug.Text = trivy.Version() + trivy.VerifyInstall();
+
+            //Nmap nmap = new Nmap();
+            //_Debug.Text = nmap.VerifyInstall().ToString() +"\n\n"+ nmap.Version();
+
+            Subfinder subfinder = new Subfinder();
+            _Debug.Text = subfinder.VerifyInstall().ToString(); // + "\n\n" + subfinder.Version();
         }
     }
 }

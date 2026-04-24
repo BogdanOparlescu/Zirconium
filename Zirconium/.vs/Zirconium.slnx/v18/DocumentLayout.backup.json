@@ -3,36 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\recon\\nmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\recon\\nmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\recon\\recontool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\recon\\recontool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\codescanners\\codescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\codescanners\\codescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\commander.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\commander.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\codescanners\\bandit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\codescanners\\bandit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\codescanners\\trivy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\codescanners\\trivy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\codescanners\\trufflehog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\codescanners\\trufflehog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\recon\\subfinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\recon\\subfinder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\tool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|c:\\users\\user\\desktop\\black_knight\\zirconium\\zirconium\\tools\\codescanners\\codescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DEBC56DD-51DA-74B9-1342-7BF69385E3A8}|Zirconium.csproj|solutionrelative:tools\\codescanners\\codescanner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,104 +34,85 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Commander.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Commander.cs",
-              "RelativeDocumentMoniker": "Tools\\Commander.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Commander.cs",
-              "RelativeToolTip": "Tools\\Commander.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Nmap.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\Nmap.cs",
+              "RelativeDocumentMoniker": "Tools\\Recon\\Nmap.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\Nmap.cs",
+              "RelativeToolTip": "Tools\\Recon\\Nmap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T05:35:45.412Z"
+              "WhenOpened": "2026-04-22T07:46:20.342Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Bandit.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Bandit.cs",
-              "RelativeDocumentMoniker": "Tools\\CodeScanners\\Bandit.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Bandit.cs",
-              "RelativeToolTip": "Tools\\CodeScanners\\Bandit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowAsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T05:34:54.993Z"
+              "WhenOpened": "2026-04-22T07:40:40.911Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Trivy.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Trivy.cs",
-              "RelativeDocumentMoniker": "Tools\\CodeScanners\\Trivy.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Trivy.cs",
-              "RelativeToolTip": "Tools\\CodeScanners\\Trivy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T05:34:31.978Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Trufflehog.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Trufflehog.cs",
-              "RelativeDocumentMoniker": "Tools\\CodeScanners\\Trufflehog.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\Trufflehog.cs",
-              "RelativeToolTip": "Tools\\CodeScanners\\Trufflehog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T05:34:23.748Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "Tool.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Tool.cs",
               "RelativeDocumentMoniker": "Tools\\Tool.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Tool.cs",
               "RelativeToolTip": "Tools\\Tool.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-12T05:29:24.58Z"
+              "WhenOpened": "2026-04-22T07:43:06.958Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "CodeScanner.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\CodeScanner.cs",
+              "RelativeDocumentMoniker": "Tools\\CodeScanners\\CodeScanner.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\CodeScanner.cs",
+              "RelativeToolTip": "Tools\\CodeScanners\\CodeScanner.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T07:43:02.818Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ReconTool.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\ReconTool.cs",
               "RelativeDocumentMoniker": "Tools\\Recon\\ReconTool.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\ReconTool.cs",
               "RelativeToolTip": "Tools\\Recon\\ReconTool.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T13:58:59.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CodeScanner.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\CodeScanner.cs",
-              "RelativeDocumentMoniker": "Tools\\CodeScanners\\CodeScanner.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\CodeScanners\\CodeScanner.cs",
-              "RelativeToolTip": "Tools\\CodeScanners\\CodeScanner.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Subfinder.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\Subfinder.cs",
+              "RelativeDocumentMoniker": "Tools\\Recon\\Subfinder.cs",
+              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Tools\\Recon\\Subfinder.cs",
+              "RelativeToolTip": "Tools\\Recon\\Subfinder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T05:20:27.48Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Config.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Config.cs",
-              "RelativeDocumentMoniker": "Config.cs",
-              "ToolTip": "C:\\Users\\User\\Desktop\\black_knight\\Zirconium\\Zirconium\\Config.cs",
-              "RelativeToolTip": "Config.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T06:47:25.279Z"
+              "WhenOpened": "2026-04-22T07:47:14.322Z",
+              "EditorCaption": ""
             }
           ]
         }

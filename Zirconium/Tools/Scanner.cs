@@ -1,6 +1,6 @@
 ﻿namespace Zirconium.Tools;
 
-public abstract class Scanner: Tool
+public abstract class Scanner: Tool, IDisposable
 {
     public string Name { get; }
     public string Description { get; }
