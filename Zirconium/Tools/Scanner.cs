@@ -1,20 +1,14 @@
 ﻿namespace Zirconium.Tools;
 
-public abstract class Scanner: Tool, IDisposable
+public abstract class Scanner(string name, string description, string obtainingSource) : Tool, IDisposable
 {
-    public string Name { get; }
-    public string Description { get; }
-    public string ObtainingSource { get; }
+    public string Name { get; } = name;
+    public string Description { get; } = description;
+    public string ObtainingSource { get; } = obtainingSource;
     public MemoryTable? ScanResults = null;
+    public string scan_out = string.Empty; //Temporary - remove when ScanResults are properly implemented!
 
     public virtual void Dispose() => ScanResults?.Dispose();
-
-    public Scanner(string name, string description, string obtainingSource)
-    {
-        Name = name;
-        Description = description;
-        ObtainingSource = obtainingSource;
-    }
 
     public virtual string Version() => Commander.RunProcess(Name, "--version").stdout;
     public virtual bool VerifyInstall()

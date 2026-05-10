@@ -22,14 +22,20 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Zirconium.Tools.Recon.ReconTool" Collapsed="true">
-    <Position X="8.75" Y="3.25" Width="1.5" />
+    <Position X="8" Y="3.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Zirconium.Tools.Recon.ReconTool.Type" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Tools\Recon\ReconTool.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>IAAAAAAAACAiAAAAAAAAAAQAAAABAAAAAAAAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tools\Recon\ReconTool.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Zirconium.Tools.Commander" Collapsed="true">
+  <Class Name="Zirconium.Tools.Commander">
     <Position X="4.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
@@ -97,14 +103,14 @@
   <Class Name="Zirconium.Tools.Recon.Nmap" Collapsed="true">
     <Position X="8.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Tools\Recon\Nmap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Zirconium.Tools.Recon.Subfinder" Collapsed="true">
     <Position X="7" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tools\Recon\Subfinder.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -20,7 +20,7 @@ public class CerebrasAgent : Agent
         endpoint = "https://api.cerebras.ai/v1/chat/completions";
     }
 
-    public Task<string> Ask(string prompt)
+    public override Task<string> Ask(string prompt)
     {
         return base.Ask(prompt, model, max_output_tokens, reasoning_effort, enableBrowserSearch, enableCodeInterpreter);
     }

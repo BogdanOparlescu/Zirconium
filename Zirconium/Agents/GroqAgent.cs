@@ -20,7 +20,7 @@ public class GroqAgent : Agent
         endpoint = "https://api.groq.com/openai/v1/chat/completions";
     }
 
-    public Task<string> Ask(string prompt)
+    public override Task<string> Ask(string prompt)
     {
         return base.Ask(prompt, model, max_output_tokens, reasoning_effort, enableBrowserSearch, enableCodeInterpreter);
     }

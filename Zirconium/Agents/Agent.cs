@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Zirconium.Agents;
 
-public class Agent
+public abstract class Agent
 {
     private string key = string.Empty;
     protected string max_tokens_alias = string.Empty;
@@ -15,11 +15,13 @@ public class Agent
         this.key = key;
     }
 
-    public async Task<string> Ask(
+    public abstract Task<string> Ask(string prompt);
+
+    protected async Task<string> Ask(
     string prompt,
     string model,
     uint max_output_tokens = 8192,
-    string reasoning_effort = "medium",
+    string reasoning_effort = "",
     bool enableBrowserSearch = false,
     bool enableCodeInterpreter = false
     )
@@ -35,9 +37,11 @@ public class Agent
             [max_tokens_alias] = max_output_tokens,
             ["top_p"] = 1,
             ["stream"] = false,
-            ["reasoning_effort"] = reasoning_effort,
+            //["reasoning_effort"] = reasoning_effort,
             ["stop"] = null
         };
+        if (reasoning_effort=="")
+            requestDict["reasoning_effort"] = reasoning_effort;
 
         var tools = new List<object>();
         if (enableBrowserSearch)
