@@ -62,10 +62,10 @@ namespace Zirconium
             // Groq 
             ToolAgent reconA = new ToolAgent("Recon Agent", "Calls passive and active recon tools", new GroqAgent("openai/gpt-oss-20b", 1024, "medium"), new List<Tool>() { new Nmap(), new Trivy()});
             ////Tool B = new ToolAgent("Recon Agent", "Calls passive and active recon tools", new GroqAgent("openai/gpt-oss-safeguard-20b", 1024), new List<Tool>() { reconA });
-            //string outRecon = await reconA.Ask(_Debug.Text);
-            //_Debug.Text = outRecon;
-            ToolDatabase.CallTool("{\n  \"tool_name\": \"nmap\",\n  \"target\": \"192.168.0.24\",\n  \"arguments\": \"-O -T0 -sS\"\n}", reconA.Tools);
+            string outRecon = await reconA.Ask(_Debug.Text);
+            _Debug.Text = outRecon;
             //_Debug.Text = reconA.SystemPrompt;
+            //ToolDatabase.CallTool("{\n  \"tool_name\": \"nmap\",\n  \"target\": \"192.168.0.24\",\n  \"arguments\": \"-O --minrate 20000\"\n}", reconA.Tools);
             // Agent a1 = {nmap}
             // Agent b1 = {C,B,a1}
         }

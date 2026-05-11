@@ -23,7 +23,7 @@ public class ToolAgent : Tool
             SystemPrompt += "Available tools to call are:\n";
             foreach (Tool tool in tools) 
             {
-                SystemPrompt += ToolDatabase.ScannerUsage((Scanner)tool);
+                SystemPrompt += ToolDatabase.Usage(tool);
                 ToolDatabase.Add(Name, tool);
             }
             if (Config.ToolCallJSON)

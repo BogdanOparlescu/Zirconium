@@ -10,7 +10,6 @@ public class Bandit : CodeScanner
         )
     { }
 
-    public string scan_out = string.Empty;
     public override void Scan(object scan_path)
     {
         scan_out = Commander.RunProcess(

@@ -12,13 +12,13 @@ public class Nmap : ReconTool
 
     public override void Scan(object scan)
     {
-        if (scan is (string target, IEnumerable<string> args))
+        if (scan is (string target, List<string> args))
             Scan(target, args);
         else
             throw new ArgumentException("Nmap Error");
     }
 
-    public void Scan(string target, params IEnumerable<string> arguments)
+    public void Scan(string target, params List<string> arguments)
     {
         string cmd = "";
         //if (!arguments.Contains("-sS"))
