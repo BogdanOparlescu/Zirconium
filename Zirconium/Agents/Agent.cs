@@ -22,6 +22,7 @@ public abstract class Agent
     string model,
     uint max_output_tokens = 8192,
     string reasoning_effort = "",
+    double temperature = 0.7,
     bool enableBrowserSearch = false,
     bool enableCodeInterpreter = false
     )
@@ -33,7 +34,7 @@ public abstract class Agent
             new { role = "user", content = prompt }
         },
             ["model"] = model,
-            ["temperature"] = 1,
+            ["temperature"] = temperature,
             [max_tokens_alias] = max_output_tokens,
             ["top_p"] = 1,
             ["stream"] = false,

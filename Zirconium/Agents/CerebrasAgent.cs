@@ -5,10 +5,11 @@ public class CerebrasAgent : Agent
     public string model;
     public uint max_output_tokens;
     public string reasoning_effort;
+    public double temperature;
     public bool enableBrowserSearch;
     public bool enableCodeInterpreter;
 
-    public CerebrasAgent(string model, uint max_output_tokens = 8192, string reasoning_effort = "medium", bool enableBrowserSearch = false, bool enableCodeInterpreter = false) : base(ApiKeys.Cerebras()!)
+    public CerebrasAgent(string model, uint max_output_tokens = 8192, string reasoning_effort = "medium", double temperature= 1, bool enableBrowserSearch = false, bool enableCodeInterpreter = false) : base(ApiKeys.Cerebras()!)
     {
         this.model = model;
         this.max_output_tokens = max_output_tokens;
@@ -22,6 +23,6 @@ public class CerebrasAgent : Agent
 
     public override Task<string> Ask(string prompt)
     {
-        return base.Ask(prompt, model, max_output_tokens, reasoning_effort, enableBrowserSearch, enableCodeInterpreter);
+        return base.Ask(prompt, model, max_output_tokens, reasoning_effort, temperature, enableBrowserSearch, enableCodeInterpreter);
     }
 }

@@ -15,7 +15,7 @@ public class ToolAgent : Tool
     public ToolAgent(string name, string description, Agent agent, List<Tool> tools)
     {
         Name = name; Description = description; Agent = agent; 
-        SystemPrompt = $"You are a {Name} that {Description}.";
+        SystemPrompt = $"You are a {Name} that {Description}.\n";
         
         Tools = tools.Where(t => t.VerifyInstall()).ToList();
         if (tools.Count > 0)
@@ -27,10 +27,9 @@ public class ToolAgent : Tool
                 ToolDatabase.Add(Name, tool);
             }
             if (Config.ToolCallJSON)
-                SystemPrompt += "Do not call tools directly, provide the json in the response and the system would parse it! All JSON in your response will result in a tool call!";
+                SystemPrompt += "Do not call tools directly, provide the json in the response and the system would parse it! All JSON in your response will result in a tool call!\n";
         }
     }
-
     public virtual async Task<string> Ask(string prompt)
     {
         prompt = SystemPrompt + prompt;
@@ -41,7 +40,7 @@ public class ToolAgent : Tool
             string tool_results = string.Empty;
             foreach (string tool_call in tool_calls)
             {
-                string tool_out = ToolDatabase.CallTool(tool_call, Tools);
+                string tool_out = await this.CallTool(tool_call); //await ToolDatabase.CallTool(tool_call, Tools);
                 tool_results = $"{tool_results} {tool_out}\n";
             }
             return tool_results;

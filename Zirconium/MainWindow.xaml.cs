@@ -21,9 +21,17 @@ namespace Zirconium
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow? Instance { get; private set; } = null;
         public MainWindow()
         {
             InitializeComponent();
+            if (Instance == null)
+                Instance = this;
+        }
+
+        public void CallStackUpdate(string text)
+        {
+            _CallStackDisplay.Text = text;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -60,9 +68,16 @@ namespace Zirconium
             // artificial analysis 
             // ChatGPT - 30/40 t/s
             // Groq 
-            ToolAgent reconA = new ToolAgent("Recon Agent", "Calls passive and active recon tools", new GroqAgent("openai/gpt-oss-20b", 1024, "medium"), new List<Tool>() { new Nmap(), new Trivy()});
             ////Tool B = new ToolAgent("Recon Agent", "Calls passive and active recon tools", new GroqAgent("openai/gpt-oss-safeguard-20b", 1024), new List<Tool>() { reconA });
-            string outRecon = await reconA.Ask(_Debug.Text);
+            ToolAgent reconA = new ToolAgent("Recon Agent", "Calls passive and active recon tools", 
+                                new GroqAgent("openai/gpt-oss-20b", 1024, "high", 0.8), 
+                                new List<Tool>() { new Nmap(), new Trivy()});
+            ToolAgent main = new ToolAgent("Vulnerability Detection Agent", "Orchestrates vulnerability findings", 
+                                new GroqAgent("openai/gpt-oss-120b", 2048, "high"), 
+                                new List<Tool>() { reconA });
+            
+            
+            string outRecon = await main.Ask(_Debug.Text);
             _Debug.Text = outRecon;
             //_Debug.Text = reconA.SystemPrompt;
             //ToolDatabase.CallTool("{\n  \"tool_name\": \"nmap\",\n  \"target\": \"192.168.0.24\",\n  \"arguments\": \"-O --minrate 20000\"\n}", reconA.Tools);

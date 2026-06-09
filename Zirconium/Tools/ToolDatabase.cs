@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Reflection;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
+using System.Reflection;
+using Zirconium.Agents;
 
 namespace Zirconium.Tools;
 
@@ -11,6 +11,7 @@ public static class ToolDatabase
     /// Tools are signed by caller
     /// </summary>
     private static List<(string, Tool)> Tools = new();
+    public static Stack<(ToolAgent, string)> ToolCallStack = new();
     public static void Add(string name, Tool tool) => Tools.Add((name, tool));
     public static List<string> ParseToolCalls(string input)
     {
@@ -55,14 +56,37 @@ public static class ToolDatabase
             scanner.ScanResults = results;
     }
 
-    public static string CallTool(string json, List<Tool> tools)
+    public static async Task<string> CallTool(this ToolAgent agent, string json)
+    {
+        ToolCallStack.Push((agent, json)); await UIBinder.CallStackUpdate();
+        uint num_tries = 0;
+        string? result = null;
+        while(num_tries < Config.ToolNumberOfTriesOnFailedUse && result  == null)
+        {
+            try
+            {
+                result = await RouteToolCall(json, agent.Tools);
+                //wait for delay
+            }
+            catch (Exception e) 
+            {
+                var x = result;
+                result = null;
+                // :/ you basically have to get the caller involved also and also do this: mechanical tool? -> caller at fault. agentic tool? -> either caller or api at fault...
+            }
+            ++num_tries;
+        }
+        ToolCallStack.Pop(); await UIBinder.CallStackUpdate();
+        return result!;
+    }
+    private static async Task<string> RouteToolCall(string json, List<Tool> tools)
     {
         var root = JsonDocument.Parse(json).RootElement;
         string tool_name = root.GetProperty("tool_name").GetString()!;
 
         Tool? tool = tools.Find(t => t.Name == tool_name);
         if (tool == null)
-            return string.Empty;
+            throw new Exception($"The tool set {tools} does not contain the tool {tool_name}");
         string function = DecodedUsage(tool);
         IReadOnlyList<string> p = ReflectionUtils.GetParamNames(tool.GetType(), function);
         MethodInfo method = tool.GetType()
@@ -71,14 +95,17 @@ public static class ToolDatabase
             .First(m => m.GetParameters().Select(param => param.Name).SequenceEqual(p));
 
         var args = p.Select(key => (object?)root.GetProperty(key).GetString()).ToArray().ConvertTypes(method);
-        var result = method.Invoke(tool, args);
-        return DecodedFeedback(tool);
+        var call = method.Invoke(tool, args)!; 
+        string result = call is Task<string> task ? await task : (string)call;
+        return DecodedFeedback(tool, result);
     }
 
     public static string Usage(Tool tool)
     {
         StringBuilder sb = new("{\n");
         sb = sb.Append($"\"tool_name\": {tool.Name}");
+        if (Config.ToolExplicitDescription && tool.ObtainingSource.Equals(Config.ZirconiumProject))
+            sb.Append($",\n\"description\": {tool.Description}");
         IReadOnlyList<string> tool_arguments = GetToolParams(tool);
         foreach (string arg in tool_arguments)
             sb = sb.Append($",\n\"{arg}\": <{arg}>");
@@ -92,13 +119,17 @@ public static class ToolDatabase
     {
         if (tool is Scanner)
             return nameof(Scanner.Scan);
+        if (tool is ToolAgent)
+            return nameof(ToolAgent.Ask);
         return string.Empty;
     }
 
-    private static string DecodedFeedback(Tool tool)
+    private static string DecodedFeedback(Tool tool, string result)
     {
         if (tool is Scanner scanner)
             return scanner.scan_out;
+        if (tool is ToolAgent agent)
+            return result;
         return string.Empty;
     }
 }
