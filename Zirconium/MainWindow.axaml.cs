@@ -8,6 +8,7 @@ using Zirconium.Agents;
 using Zirconium.Tools;
 using Zirconium.Tools.CodeScanners;
 using Zirconium.Tools.Recon;
+using Zirconium.UI;
 
 namespace Zirconium
 {
@@ -79,6 +80,30 @@ namespace Zirconium
             //ToolDatabase.CallTool("{\n  \"tool_name\": \"nmap\",\n  \"target\": \"192.168.0.24\",\n  \"arguments\": \"-O --minrate 20000\"\n}", reconA.Tools);
             // Agent a1 = {nmap}
             // Agent b1 = {C,B,a1}
+        }
+
+
+        private void SidebarMainChat(object? sender, RoutedEventArgs e)
+        {
+            _MainChat.IsVisible = true;
+            _OG.IsVisible = false;
+        }
+        private void SidebarInstalledTools(object? sender, RoutedEventArgs e)
+        {
+            _MainChat.IsVisible = false;
+            _OG.IsVisible = true;
+        }
+        private void SidebarOrchestrationSchema(object? sender, RoutedEventArgs e)
+        {
+            _SideBar.IsVisible = false;
+        }
+        private void SidebarCallStack(object? sender, RoutedEventArgs e)
+        {
+            _SideBar.IsVisible = false;
+        }
+        private void SidebarCollapse(object? sender, RoutedEventArgs e)
+        {
+            _SideBar.IsVisible = false;
         }
     }
 }

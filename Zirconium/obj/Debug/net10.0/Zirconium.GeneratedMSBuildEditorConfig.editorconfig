@@ -28,3 +28,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/User/Desktop/black_knight/Zirconium/Zirconium/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/User/Desktop/black_knight/Zirconium/Zirconium/UI/MockView.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

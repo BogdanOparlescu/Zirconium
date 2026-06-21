@@ -3,12 +3,45 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Zirconium"
+        xmlns:ui="clr-namespace:Zirconium.UI"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Zirconium.MainWindow"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Zirconium" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="_Debug" HorizontalAlignment="Left" Margin="49,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="514" AcceptsReturn="True"/>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBlock x:Name="_CallStackDisplay" HorizontalAlignment="Left" Margin="591,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="178"/>
+
+        <Grid x:Name="_SideBar" ZIndex="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="36"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="#101015">
+
+                <StackPanel Margin="4"
+                            VerticalAlignment="Top"
+                            Spacing="8">
+
+                    <Button Content="1" Click="SidebarMainChat"/>
+                    <Button Content="2" Click="SidebarInstalledTools"/>
+                    <Button Content="3" Click="SidebarOrchestrationSchema"/>
+                    <Button Content="4" Click="SidebarCallStack"/>
+                    <Button Content="b" Click="SidebarCollapse"/>
+
+                </StackPanel>
+            </Border>
+            <!-- Page Content Area 
+            <ContentControl x:Name="PageHost"
+                            Grid.Column="1"/>-->
+        </Grid>
+
+        <Grid x:Name="_OG" IsVisible="False">
+            <TextBox x:Name="_Debug" HorizontalAlignment="Left" Margin="49,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="514" AcceptsReturn="True"/>
+            <Button Content="Button" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+            <TextBlock x:Name="_CallStackDisplay" HorizontalAlignment="Left" Margin="591,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="178"/>
+        </Grid>
+    
+        <Grid x:Name="_MainChat">
+            <ui:MockView></ui:MockView>
+        </Grid>
     </Grid>
 </Window>

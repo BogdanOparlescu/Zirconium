@@ -2,6 +2,7 @@
 using System.Text.Json;
 using System.Reflection;
 using Zirconium.Agents;
+using Zirconium.UI;
 
 namespace Zirconium.Tools;
 
@@ -72,6 +73,7 @@ public static class ToolDatabase
             {
                 var x = result;
                 result = null;
+                var y = e; //warning suppresion
                 // :/ you basically have to get the caller involved also and also do this: mechanical tool? -> caller at fault. agentic tool? -> either caller or api at fault...
             }
             ++num_tries;
