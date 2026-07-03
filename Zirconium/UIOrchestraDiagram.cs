@@ -33,6 +33,8 @@ public class UIOrchestraDiagram
     private readonly Canvas _CanvasHost;
     private readonly ScaleTransform _canvasScale;
     private readonly TranslateTransform _canvasTranslate;
+    ToolAgent? _LastDrawn = null;
+    bool redrawAgentsEveryTime = false;
 
 
     private class LayoutNode
@@ -60,11 +62,17 @@ public class UIOrchestraDiagram
         if (rootAgent == null) return;
 
         // ── Clear canvas & reset transforms ───────────────────────
-        _CanvasHost.Children.Clear();
         _canvasScale.ScaleX = 1;
         _canvasScale.ScaleY = 1;
         _canvasTranslate.X = 0;
         _canvasTranslate.Y = 0;
+        if (!redrawAgentsEveryTime)
+        {
+            if (rootAgent == _LastDrawn)
+                return;
+            _LastDrawn = rootAgent;
+        }
+        _CanvasHost.Children.Clear();
 
         // ── Tunable parameters ───────────────────────────────────
         const double BaseBubbleDiameter = 180;

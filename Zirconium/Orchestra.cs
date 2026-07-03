@@ -15,10 +15,8 @@ public sealed class Orchestra
         Initialize();
     }
 
+    private ToolAgent? _Root { get; set; }
     public ToolAgent? _Selected { get; set; }
-
-    //agent tree
-    //main agent [the one we are talking to]
     private void Initialize()
     {
         ToolAgent reconA = new ToolAgent("Recon Agent", "Calls passive and active recon tools",
@@ -28,6 +26,9 @@ public sealed class Orchestra
                             new GroqAgent("openai/gpt-oss-120b", 2048, "high"),
                             new List<Tool>() { reconA, new Nmap() });
 
-        _Selected = reconA;
+        _Selected = main;
+        _Root = main;
     }
+
+    public ToolAgent RootAgent() => _Root!;
 }

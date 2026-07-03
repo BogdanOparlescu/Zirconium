@@ -82,39 +82,76 @@
 
                 <Border MaxWidth="980"
                         HorizontalAlignment="Center">
+                    <StackPanel Orientation="Vertical" Spacing="6" VerticalAlignment="Top">
+                        <TextBlock x:Name="ModelLabel"
+                                   Text="Model: —"
+                                   FontSize="11"
+                                   Foreground="#888888"
+                                   HorizontalAlignment="Left"
+                                   Margin="2,0,0,0"/>
+                        <Grid ColumnDefinitions="*,Auto,Auto">
+                            <TextBox x:Name="PromptBox"
+                                     Text="{Binding Prompt}"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     MinHeight="42"
+                                     MaxHeight="140"
+                                     Background="#141414"
+                                     Foreground="#EAEAEA"
+                                     CaretBrush="#EAEAEA"
+                                     BorderThickness="1"
+                                     BorderBrush="#2A2A2A"
+                                     Padding="14"
+                                     PlaceholderText="Message..." />
 
-                    <Grid ColumnDefinitions="*,Auto">
+                            <Button Grid.Column="1"
+                                    x:Name="SendButton"
+                                    Content="→"
+                                    Width="44"
+                                    Height="44"
+                                    Margin="10,0,0,0"
+                                    Background="#141414"
+                                    BorderBrush="#2A2A2A"
+                                    BorderThickness="1"
+                                    Foreground="#EAEAEA"
+                                    Click="SendClicked" />
 
-                        <TextBox x:Name="PromptBox"
-                                 Text="{Binding Prompt}"
-                                 AcceptsReturn="True"
-                                 TextWrapping="Wrap"
-                                 MinHeight="42"
-                                 MaxHeight="140"
-                                 Background="#141414"
-                                 Foreground="#EAEAEA"
-                                 CaretBrush="#EAEAEA"
-                                 BorderThickness="1"
-                                 BorderBrush="#2A2A2A"
-                                 Padding="14"
-                                 PlaceholderText="Message..." />
-
-                        <Button Grid.Column="1"
-                                x:Name="SendButton"
-                                Content="→"
-                                Width="44"
-                                Height="44"
-                                Margin="10,0,0,0"
-                                Background="#141414"
-                                BorderBrush="#2A2A2A"
-                                BorderThickness="1"
-                                Foreground="#EAEAEA"
-                                Click="SendClicked" />
-
-                    </Grid>
+                            <Button Grid.Column="2"
+                                    x:Name="ModelSelectorButton"
+                                    Content="^"
+                                    Width="32"
+                                    Height="44"
+                                    Margin="6,0,0,0"
+                                    FontSize="12"
+                                    Background="#141414"
+                                    BorderBrush="#2A2A2A"
+                                    BorderThickness="1"
+                                    Foreground="#EAEAEA"
+                                    Click="ModelSelectorClicked" />
+                        </Grid>
+                    </StackPanel>
                 </Border>
             </Border>
 
         </Grid>
+
+        <Popup x:Name="ModelPopup"
+        IsLightDismissEnabled="True"
+        Placement="Bottom"
+        HorizontalOffset="0"
+        VerticalOffset="0">
+            <Border Background="#000000"
+                BorderBrush="#333333"
+                BorderThickness="1"
+                CornerRadius="6"
+                Width="260"
+                MaxHeight="400"
+                ClipToBounds="True">
+            <ScrollViewer x:Name="ModelScroll"
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto"/>
+            </Border>
+        </Popup>
+
     </Grid>
 </UserControl>
