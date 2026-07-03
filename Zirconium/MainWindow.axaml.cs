@@ -1,6 +1,8 @@
 ﻿using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using System.Collections;
 using System.Diagnostics;
 using System.Text;
@@ -24,11 +26,21 @@ namespace Zirconium
             InitializeComponent();
             if (Instance == null)
                 Instance = this;
+            InitializeConfigTable();
+            InitializaOrchestrationCanvas();
         }
-
         public void CallStackUpdate(string text)
         {
             _CallStackDisplay.Text = text;
+        }
+
+        public void InitializeConfigTable() => _ConfigGrid.ItemsSource = UIBinder.ConfigItems();
+        public void InitializaOrchestrationCanvas() 
+        {
+            var transformGroup = (TransformGroup)_CanvasHost.RenderTransform!;
+            _canvasScale = (ScaleTransform)transformGroup.Children[0];
+            _canvasTranslate = (TranslateTransform)transformGroup.Children[1];
+            UIOrchestraDiagram.Init(_OrchestrationCanvas, _CanvasHost, _canvasScale, _canvasTranslate);
         }
 
         private async void Button_Click(object? sender, RoutedEventArgs e)
@@ -73,6 +85,8 @@ namespace Zirconium
                                 new GroqAgent("openai/gpt-oss-120b", 2048, "high"),
                                 new List<Tool>() { reconA });
 
+            //new CerebrasAgent("zai-glm-4.7", 2048, "default"),
+
 
             string outRecon = await main.Ask(_Debug.Text!);
             _Debug.Text = outRecon;
@@ -86,24 +100,65 @@ namespace Zirconium
         private void SidebarMainChat(object? sender, RoutedEventArgs e)
         {
             _MainChat.IsVisible = true;
-            _OG.IsVisible = false;
+            _OrchestrationCanvas.IsVisible = false;
+            _ConfigView.IsVisible = false;
         }
         private void SidebarInstalledTools(object? sender, RoutedEventArgs e)
         {
             _MainChat.IsVisible = false;
-            _OG.IsVisible = true;
+            _OrchestrationCanvas.IsVisible = true;
+            _ConfigView.IsVisible = false;
         }
         private void SidebarOrchestrationSchema(object? sender, RoutedEventArgs e)
         {
-            _SideBar.IsVisible = false;
+            _MainChat.IsVisible = false;
+            _OrchestrationCanvas.IsVisible = true;
+            _ConfigView.IsVisible = false;
+            if(Orchestra.Instance._Selected != null)
+                UIOrchestraDiagram.Instance.DrawOrchestration(Orchestra.Instance._Selected!);
         }
         private void SidebarCallStack(object? sender, RoutedEventArgs e)
         {
             _SideBar.IsVisible = false;
         }
+        private void SidebarRecordLog(object? sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SidebarConfigSettings(object? sender, RoutedEventArgs e)
+        {
+            _MainChat.IsVisible = false;
+            _OrchestrationCanvas.IsVisible = false;
+            _ConfigView.IsVisible = true;
+        }
+            
         private void SidebarCollapse(object? sender, RoutedEventArgs e)
         {
             _SideBar.IsVisible = false;
         }
+
+        private void SideBarEnable(object? sender, RoutedEventArgs e)
+        {
+            _SideBar.IsVisible = true;
+        }
+
+
+
+
+
+
+        private ScaleTransform? _canvasScale;
+        private TranslateTransform? _canvasTranslate;
+        private void Canvas_PointerPressed(object sender, PointerPressedEventArgs e)
+            => UIOrchestraDiagram.Instance.PointerPressed(this as Visual, e);
+
+        private void Canvas_PointerMoved(object sender, PointerEventArgs e)
+            => UIOrchestraDiagram.Instance.PointerMoved(e);
+
+        private void Canvas_PointerReleased(object sender, PointerReleasedEventArgs e)
+            => UIOrchestraDiagram.Instance.PointerReleased(e);
+
+        private void Canvas_PointerWheelChanged(object sender, PointerWheelEventArgs e)
+            => UIOrchestraDiagram.Instance.PointerWheelChanged(e);
     }
 }

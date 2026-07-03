@@ -3,6 +3,7 @@ using Avalonia.Layout;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 
 namespace Zirconium.UI;
@@ -25,28 +26,20 @@ public class Chat : INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-    public async Task SendAsync()
+    
+    public void UserMessage(string content) => Messages.Add(new ChatMessage { Content = content , IsUser  = true});
+    public void AssistantMessage(string content) => Messages.Add(new ChatMessage { Content = content, IsUser = false });
+    
+    public async Task Process()
     {
         if (string.IsNullOrWhiteSpace(Prompt))
             return;
 
         var userText = Prompt.Trim();
-
-        Messages.Add(new ChatMessage
-        {
-            Content = userText,
-            IsUser = true
-        });
-
         Prompt = "";
 
-        await Task.Delay(350);
-
-        Messages.Add(new ChatMessage
-        {
-            Content = "GenerateLorem()",
-            IsUser = false
-        });
+        UserMessage(userText);
+        AssistantMessage("GenerateLorem()");
     }
 
     private void OnPropertyChanged([CallerMemberName] string? name = null)

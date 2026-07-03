@@ -3,6 +3,7 @@ using Avalonia.Layout;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -29,5 +30,23 @@ public static class UIBinder
             sb.Append($"{a.Item1.Name}\n{a.Item2}\n\n");
         MainWindow.Instance!.CallStackUpdate(sb.ToString());
         await Task.Delay(2000);
+    }
+
+    public record ConfigItem(string Name, string Value, string Type);
+    public static List<ConfigItem> ConfigItems()
+    {
+        var rows = new List<ConfigItem>();
+        var t = typeof(Config);
+        var flags = BindingFlags.Public | BindingFlags.Static;
+
+        foreach (var f in t.GetFields(flags))
+            rows.Add(new ConfigItem(f.Name, f.GetValue(null)?.ToString() ?? "", f.FieldType.Name));
+
+        foreach (var p in t.GetProperties(flags))
+        {
+            if (p.GetIndexParameters().Length > 0) continue;
+            rows.Add(new ConfigItem(p.Name, p.GetValue(null)?.ToString() ?? "", p.PropertyType.Name));
+        }
+        return rows;
     }
 }
