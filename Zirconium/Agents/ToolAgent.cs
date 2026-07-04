@@ -16,16 +16,15 @@ public class ToolAgent : Tool
     {
         Name = name; Description = description; Agent = agent; 
         SystemPrompt = $"You are a {Name} that {Description}.\n";
-        
+
+        ToolDatabase.AddRange(Name, tools);
         Tools = tools.Where(t => t.VerifyInstall()).ToList();
-        if (tools.Count > 0)
+        if (Tools.Count > 0)
         {
             SystemPrompt += "Available tools to call are:\n";
-            foreach (Tool tool in tools) 
-            {
+            foreach (Tool tool in Tools) 
                 SystemPrompt += ToolDatabase.Usage(tool);
-                ToolDatabase.Add(Name, tool);
-            }
+
             if (Config.ToolCallJSON)
                 SystemPrompt += "Do not call tools directly, provide the json in the response and the system would parse it! All JSON in your response will result in a tool call!\n";
         }

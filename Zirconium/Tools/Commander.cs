@@ -1,9 +1,11 @@
-﻿using System.Diagnostics;
+﻿using Avalonia.Threading;
+using System.Diagnostics;
 
 namespace Zirconium.Tools;
 
 public static class Commander
 {
+
     public static (int exitCode, string stdout, string stderr) RunProcess(
         string fileName,
         string arguments)

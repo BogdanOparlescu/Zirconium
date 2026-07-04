@@ -1,4 +1,6 @@
-﻿namespace Zirconium.Agents;
+﻿using System.Text;
+
+namespace Zirconium.Agents;
 
 public class GroqAgent : Agent
 {
@@ -26,4 +28,6 @@ public class GroqAgent : Agent
     {
         return base.Ask(prompt, model, max_output_tokens, reasoning_effort, temperature, enableBrowserSearch, enableCodeInterpreter);
     }
+
+    public override string ToString() => $"{model} (reasoning:{reasoning_effort}) (max completion tokens:{max_output_tokens})";
 }

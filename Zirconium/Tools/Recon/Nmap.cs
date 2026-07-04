@@ -20,7 +20,6 @@ public class Nmap : ReconTool
 
     public void Scan(string target, params List<string> arguments)
     {
-        //throw new Exception("testing route call fails!");
         string cmd = "";
         //if (!arguments.Contains("-sS"))
         //    arguments.Add("-sS");

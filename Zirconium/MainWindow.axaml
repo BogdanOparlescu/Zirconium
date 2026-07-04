@@ -44,11 +44,11 @@
         </Grid>
 
 
-        <Grid x:Name="_OG" IsVisible="False">
+        <!--<Grid x:Name="_OG" IsVisible="False">
             <TextBox x:Name="_Debug" HorizontalAlignment="Left" Margin="49,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="514" AcceptsReturn="True"/>
             <Button Content="Button" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Click="Button_Click"/>
             <TextBlock x:Name="_CallStackDisplay" HorizontalAlignment="Left" Margin="591,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="178"/>
-        </Grid>
+        </Grid>-->
 
         <!-- Orchestration Visualization -->
         <Border x:Name="_OrchestrationCanvas"
@@ -73,7 +73,21 @@
     
         <!-- Chat -->
         <Grid x:Name="_MainChat">
-            <ui:ChatView></ui:ChatView>
+            <ui:ChatView x:Name="_ChatViewControl"/>
+        </Grid>
+
+        <!-- Tooling Arsenals -->
+        <Grid x:Name="_ToolView" IsVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="520" MaxHeight="400">
+            <DataGrid x:Name="_ToolGrid"
+                IsReadOnly="True"
+                GridLinesVisibility="All"
+                BorderThickness="1" BorderBrush="Gray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Agent" Binding="{Binding Agent, DataType={x:Type ui:UIBinder+ToolItem}}" Width="2*" />
+                    <DataGridTextColumn Header="Tool" Binding="{Binding Tool, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*" />
+                    <DataGridTextColumn Header="Installed" Binding="{Binding Installed, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
         <!-- Config Settings -->
@@ -88,7 +102,8 @@
                     <DataGridTextColumn Header="Type" Binding="{Binding Type, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="*" />
                 </DataGrid.Columns>
             </DataGrid>
-
         </Grid>
+
+
     </Grid>
 </Window>

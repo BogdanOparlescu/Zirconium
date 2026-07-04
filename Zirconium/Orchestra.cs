@@ -31,4 +31,5 @@ public sealed class Orchestra
     }
 
     public ToolAgent RootAgent() => _Root!;
+    public async Task<string> Process(string query) => await _Selected!.Ask(query);
 }

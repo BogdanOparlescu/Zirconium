@@ -30,7 +30,28 @@
         <Border Background="#B0000000"
                 IsHitTestVisible="False" />
 
-        <Grid RowDefinitions="*,Auto"
+        <Border x:Name="_CallStackPanel"
+                Grid.Column="1"
+                IsVisible="False"
+                Background="#0A0A0A"
+                BorderBrush="#222222"
+                BorderThickness="1,0,0,0">
+            <TextBox x:Name="_CallStack"
+                     IsReadOnly="True"
+                     AcceptsReturn="True"
+                     TextWrapping="Wrap"
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     Background="#0A0A0A"
+                     Foreground="#EAEAEA"
+                     BorderThickness="0"
+                     Padding="10"
+                     FontFamily="Consolas, Courier New, monospace"
+                     FontSize="12"/>
+        </Border>
+
+        <Grid Grid.Column="0"
+              RowDefinitions="*,Auto"
               Background="Transparent">
 
             <ScrollViewer x:Name="ChatScroll"

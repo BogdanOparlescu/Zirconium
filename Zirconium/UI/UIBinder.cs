@@ -31,7 +31,15 @@ public static class UIBinder
         MainWindow.Instance!.CallStackUpdate(sb.ToString());
         await Task.Delay(2000);
     }
+    public record ToolItem(string Agent, string Tool, bool Installed);
 
+    public static List<ToolItem> ToolingItems()
+    {
+        var rows = new List<ToolItem>();
+        foreach (var (agent,tool) in ToolDatabase.GetTools())
+            rows.Add(new ToolItem(agent, tool.Name, tool.VerifyInstall()));
+        return rows;
+    }
     public record ConfigItem(string Name, string Value, string Type);
     public static List<ConfigItem> ConfigItems()
     {

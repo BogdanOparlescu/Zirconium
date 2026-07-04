@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Reflection;
 using Zirconium.Agents;
 using Zirconium.UI;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Zirconium.Tools;
 
@@ -14,6 +15,12 @@ public static class ToolDatabase
     private static List<(string, Tool)> Tools = new();
     public static Stack<(ToolAgent, string)> ToolCallStack = new();
     public static void Add(string name, Tool tool) => Tools.Add((name, tool));
+    public static void AddRange(string agentName, List<Tool> tools)
+    {
+        foreach (var t in tools)
+            Tools.Add((agentName, t));
+    }
+    public static List<(string, Tool)> GetTools() => Tools;
     public static List<string> ParseToolCalls(string input)
     {
         var result = new List<string>();

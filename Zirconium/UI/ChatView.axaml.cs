@@ -17,6 +17,7 @@ public partial class ChatView : UserControl
 {
     private Chat ViewModel => (Chat)DataContext!;
 
+    private Grid _rootGrid = null!;
     private ScrollViewer? _scroll;
     private List<(ToolAgent Agent, int Indent)> _modelTree = new();
     private DateTime _popupClosedAt = DateTime.MinValue;
@@ -28,12 +29,15 @@ public partial class ChatView : UserControl
 
         DataContext = new Chat();
         _scroll = this.FindControl<ScrollViewer>("ChatScroll");
+        _rootGrid = (Grid)Content!;
 
         ViewModel.Messages.CollectionChanged += Messages_CollectionChanged;
+        ViewModel.InitChatCommands();
         ModelPopup.PlacementTarget = ModelSelectorButton;
         ModelPopup.Closed += (_, _) => _popupClosedAt = DateTime.Now;
         BuildModelTree();
         UpdateModelLabel();
+        SetCallStackVisible(false);
     }
 
     //private void InitializeComponent()
@@ -130,4 +134,24 @@ public partial class ChatView : UserControl
         var selected = Orchestra.Instance._Selected;
         ModelLabel.Text = selected is ToolAgent ta ? $"{ta.Name}" : "Model: —";
     }
+
+    public void SetCallStackVisible(bool visible)
+    {
+        if (_CallStackPanel.Parent is Panel p)
+            p.Children.Remove(_CallStackPanel);
+
+        if (visible)
+        {
+            _rootGrid.ColumnDefinitions = new ColumnDefinitions("3*,*");
+            _CallStackPanel.IsVisible = true;
+            Grid.SetColumn(_CallStackPanel, 1);
+            _rootGrid.Children.Insert(0, _CallStackPanel);
+        }
+        else
+        {
+            _rootGrid.ColumnDefinitions = new ColumnDefinitions("*");
+        }
+    }
+
+    public void ToggleCallStack() => SetCallStackVisible(!_rootGrid.ColumnDefinitions.ToString().Contains("3*"));
 }

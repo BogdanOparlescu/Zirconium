@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace Zirconium.UI;
 
@@ -35,11 +36,66 @@ public class Chat : INotifyPropertyChanged
         if (string.IsNullOrWhiteSpace(Prompt))
             return;
 
+        if (Prompt[0] == '/')
+        {
+            ProcessCommand(Prompt);
+            Prompt = "";
+            return;
+        }
+
         var userText = Prompt.Trim();
         Prompt = "";
 
         UserMessage(userText);
-        AssistantMessage("GenerateLorem()");
+        var x = await Orchestra.Instance.Process(userText);
+        AssistantMessage(x);
+    }
+
+    public static List<(string Name, string Description, Action<Chat> Handler)> ChatCommands = new();
+
+    public void ProcessCommand(string command)
+    {
+        foreach (var (name, _, handler) in ChatCommands)
+            if (name == command)
+            {
+                handler(this);
+                return;
+            }
+    }
+
+    public void InitChatCommands()
+    {
+        ChatCommands.Add(("/agent", "Displays selected agent information", chat => chat.DisplayAgentInformation()));
+        ChatCommands.Add(("/clear", "Clear chat history and selected agent memory", chat => chat.ClearHistory()));
+        ChatCommands.Add(("/prompt", "Display the selected agent system prompt", chat => chat.DisplaySystemInstructions()));
+        ChatCommands.Add(("/help", "Show available commands", chat =>
+        {
+            var sb = new StringBuilder("Available commands:\n");
+            foreach (var (name, description, _) in ChatCommands)
+                sb.AppendLine($"  {name,-10} - {description}");
+            chat.AssistantMessage(sb.ToString());
+        }));
+    }
+
+    public void ClearHistory()
+    {
+        Prompt = "";
+        Messages.Clear();
+        //Orchestra.Instance._Selected!.ClearMemory();
+    }
+
+    public void DisplaySystemInstructions() =>
+        AssistantMessage(Orchestra.Instance._Selected!.SystemPrompt);
+
+    public void DisplayAgentInformation()
+    {
+        var agent = Orchestra.Instance._Selected!;
+        var sb = new StringBuilder();
+        sb.AppendLine(agent.Name);
+        sb.AppendLine(agent.Description);
+        sb.AppendLine(agent.Agent.ToString());
+        sb.AppendLine($"[ {string.Join(" ", agent.Tools.Select(t => t.Name)) } ]");
+        AssistantMessage(sb.ToString());
     }
 
     private void OnPropertyChanged([CallerMemberName] string? name = null)
