@@ -3,7 +3,6 @@ using System.Text.Json;
 using System.Reflection;
 using Zirconium.Agents;
 using Zirconium.UI;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Zirconium.Tools;
 
@@ -67,26 +66,48 @@ public static class ToolDatabase
     public static async Task<string> CallTool(this ToolAgent agent, string json)
     {
         ToolCallStack.Push((agent, json)); await UIBinder.CallStackUpdate();
-        uint num_tries = 0;
-        string? result = null;
-        while(num_tries < Config.ToolNumberOfTriesOnFailedUse && result  == null)
+        try
         {
+            bool isAgentTool = false;
             try
             {
-                result = await RouteToolCall(json, agent.Tools);
-                //wait for delay
+                var root = JsonDocument.Parse(json).RootElement;
+                string tool_name = root.GetProperty("tool_name").GetString()!;
+                isAgentTool = agent.Tools.Find(t => t.Name == tool_name) is ToolAgent;
             }
-            catch (Exception e) 
+            catch { }
+
+            uint num_tries = 0;
+            string? result = null;
+            Exception? lastError = null;
+
+            while (num_tries < Config.ToolNumberOfTriesOnFailedUse && result == null)
             {
-                var x = result;
-                result = null;
-                var y = e; //warning suppresion
-                // :/ you basically have to get the caller involved also and also do this: mechanical tool? -> caller at fault. agentic tool? -> either caller or api at fault...
+                try
+                {
+                    result = await RouteToolCall(json, agent.Tools);
+                }
+                catch (Exception e)
+                {
+                    lastError = e;
+                    num_tries++;
+                    if (num_tries < Config.ToolNumberOfTriesOnFailedUse && isAgentTool)
+                    {
+                        int delayMs = (int)(1000 * Math.Pow(2, num_tries - 1));
+                        await Task.Delay(delayMs);
+                    }
+                }
             }
-            ++num_tries;
+
+            if (result == null)
+                throw new Exception($"Tool call failed after {num_tries} attempts", lastError);
+
+            return result;
         }
-        ToolCallStack.Pop(); await UIBinder.CallStackUpdate();
-        return result!;
+        finally
+        {
+            ToolCallStack.Pop(); await UIBinder.CallStackUpdate();
+        }
     }
     private static async Task<string> RouteToolCall(string json, List<Tool> tools)
     {

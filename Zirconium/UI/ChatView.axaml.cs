@@ -49,9 +49,8 @@ public partial class ChatView : UserControl
     {
         var assemblyName = GetType().Assembly.GetName().Name;
         using var stream = AssetLoader.Open(new Uri($"avares://{assemblyName}/UI/octo.txt"));
-
         using var reader = new StreamReader(stream);
-        _OctoAsciiArt.Text = reader.ReadToEnd();
+        _OctoAsciiArt.Text = reader.ReadToEnd(); //.Replace("\r", "");
     }
 
     private void Messages_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) =>

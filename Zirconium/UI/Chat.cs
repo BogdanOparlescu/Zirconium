@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Zirconium.Agents;
 
 namespace Zirconium.UI;
 
@@ -81,7 +82,8 @@ public class Chat : INotifyPropertyChanged
     {
         Prompt = "";
         Messages.Clear();
-        //Orchestra.Instance._Selected!.ClearMemory();
+        if (Orchestra.Instance._Selected is ReasoningAgent ra)
+            ra.Context.Clear();
     }
 
     public void DisplaySystemInstructions() =>
@@ -94,7 +96,9 @@ public class Chat : INotifyPropertyChanged
         sb.AppendLine(agent.Name);
         sb.AppendLine(agent.Description);
         sb.AppendLine(agent.Agent.ToString());
-        sb.AppendLine($"[ {string.Join(" ", agent.Tools.Select(t => t.Name)) } ]");
+        if (agent is ReasoningAgent ra)
+            sb.AppendLine($"Reasoning Type: {ra.Reasoning}, Memory Type: {ra.Context.MemoryType}");
+        sb.AppendLine($"[ {string.Join(", ", agent.Tools.Select(t => t.Name)) } ]");
         AssistantMessage(sb.ToString());
     }
 

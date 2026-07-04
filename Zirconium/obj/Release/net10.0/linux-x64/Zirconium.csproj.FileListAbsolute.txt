@@ -49,9 +49,6 @@ C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.AssemblyInfo.cs
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.sourcelink.json
-C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Avalonia\Zirconium.dll
-C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Avalonia\Zirconium.pdb
-C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\refint\Avalonia\Zirconium.dll
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.csproj.Up2Date
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.genruntimeconfig.cache
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\ref\Zirconium.dll
@@ -242,3 +239,10 @@ C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\libhostpolicy.so
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\libmscordaccore.so
 C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\libmscordbi.so
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\Avalonia.Controls.DataGrid.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\Avalonia.FreeDesktop.AtSpi.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\Avalonia.HarfBuzz.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\bin\Release\net10.0\linux-x64\Avalonia.Win32.Automation.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\refint\Zirconium.dll
+C:\Users\User\Desktop\black_knight\Zirconium\Zirconium\obj\Release\net10.0\linux-x64\Zirconium.pdb

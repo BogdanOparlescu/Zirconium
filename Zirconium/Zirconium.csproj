@@ -30,6 +30,7 @@
     <AvaloniaResource Include="UI\octo.png" />
     <AvaloniaResource Include="UI\icon.ico" />
     <AvaloniaResource Include="UI\octo.txt" />
+    <AvaloniaResource Include="UI\consola.ttf" />
   </ItemGroup>
 	
 </Project>

@@ -35,16 +35,19 @@ public class ToolAgent : Tool
         string response = await Agent.Ask(prompt);
         List<string> tool_calls = ToolDatabase.ParseToolCalls(response);
         if (tool_calls.Count() > 0)
-        {
-            string tool_results = string.Empty;
-            foreach (string tool_call in tool_calls)
-            {
-                string tool_out = await this.CallTool(tool_call); //await ToolDatabase.CallTool(tool_call, Tools);
-                tool_results = $"{tool_results} {tool_out}\n";
-            }
-            return tool_results;
-        }
+            return await ExecuteToolCalls(tool_calls);
         return response;
+    }
+
+    protected async Task<string> ExecuteToolCalls(List<string> tool_calls)
+    {
+        string tool_results = string.Empty;
+        foreach (string tool_call in tool_calls)
+        {
+            string tool_out = await this.CallTool(tool_call); //await ToolDatabase.CallTool(tool_call, Tools);
+            tool_results = $"{tool_results} {tool_out}\n";
+        }
+        return tool_results;
     }
 
     public bool VerifyInstall() => true;

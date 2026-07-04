@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="12.0.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="12.0.5" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.5" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.5" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="12.0.1" />
+    <!-- unchanged -->
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    <PackageReference Include="Tmds.DBus.Protocol" Version="0.92.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="UI\ChatView.axaml.cs">
+      <DependentUpon>ChatView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AvaloniaResource Include="UI\octo.png" />
+    <AvaloniaResource Include="UI\icon.ico" />
+    <AvaloniaResource Include="UI\octo.txt" />
+  </ItemGroup>
+	
+</Project>

@@ -15,7 +15,7 @@
            IsHitTestVisible="False"/>-->
            <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform">
                <TextBlock x:Name="_OctoAsciiArt"
-               FontFamily="Consolas, Courier New, monospace"
+               FontFamily="avares://Zirconium/UI/consola.ttf#C"
                FontSize="5"
                LineHeight="5"
                Foreground="GhostWhite"
@@ -31,7 +31,6 @@
                 IsHitTestVisible="False" />
 
         <Border x:Name="_CallStackPanel"
-                Grid.Column="1"
                 IsVisible="False"
                 Background="#0A0A0A"
                 BorderBrush="#222222"
@@ -40,14 +39,15 @@
                      IsReadOnly="True"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"
-                     ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      Background="#0A0A0A"
                      Foreground="#EAEAEA"
                      BorderThickness="0"
                      Padding="10"
                      FontFamily="Consolas, Courier New, monospace"
-                     FontSize="12"/>
+                     FontSize="12"
+                     TextBlock.TextWrapping="Wrap"/>
         </Border>
 
         <Grid Grid.Column="0"
@@ -78,7 +78,7 @@
 
                                         <ExperimentalAcrylicBorder.Material>
                                             <ExperimentalAcrylicMaterial BackgroundSource="Digger"
-                                                                          TintColor="blue"/>
+                                                                          TintColor="DarkBlue"/> <!--blue-->
                                         </ExperimentalAcrylicBorder.Material>
 
                                         <SelectableTextBlock Text="{Binding Content}"

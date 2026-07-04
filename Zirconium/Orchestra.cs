@@ -20,11 +20,12 @@ public sealed class Orchestra
     private void Initialize()
     {
         ToolAgent reconA = new ToolAgent("Recon Agent", "Calls passive and active recon tools",
-                                new GroqAgent("openai/gpt-oss-20b", 1024, "high", 0.8),
-                                new List<Tool>() { new Nmap(), new Trivy(), new Trivy(), new Trivy(), new Trivy() });
-        ToolAgent main = new ToolAgent("Vulnerability Detection Agent", "Orchestrates vulnerability findings",
-                            new GroqAgent("openai/gpt-oss-120b", 2048, "high"),
-                            new List<Tool>() { reconA, new Nmap() });
+                                new GroqAgent("openai/gpt-oss-120b", 2048, "high", 0.8),
+                                new List<Tool>() { new Nmap(), new Trivy(), new Gobuster(), new Subfinder() });
+        ToolAgent main = new ReasoningAgent("Vulnerability Detection Agent", "Orchestrates vulnerability findings",
+                            new CerebrasAgent("zai-glm-4.7", 4096, "high"),
+                            new List<Tool>() { reconA, new Nmap() },
+                            ReasoningType.Reasoning, MemoryType.Persistent);
 
         _Selected = main;
         _Root = main;
