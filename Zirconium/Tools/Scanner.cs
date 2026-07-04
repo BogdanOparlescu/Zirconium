@@ -10,12 +10,12 @@ public abstract class Scanner(string name, string description, string obtainingS
 
     public virtual void Dispose() => ScanResults?.Dispose();
 
-    public virtual string Version() => Commander.RunProcess(Name, "--version").stdout;
+    public virtual string Version() => Commander.RunProcess(Name, "--version", true).stdout;
     public virtual bool VerifyInstall()
     {
         try
         {
-            return Commander.RunProcess(Name, "--version").exitCode == 0;
+            return Commander.RunProcess(Name, "--version", true).exitCode == 0;
         }
         catch
         {

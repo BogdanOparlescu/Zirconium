@@ -33,13 +33,13 @@ public static class UIBinder
     }
     public record ToolItem(string Agent, string Tool, bool Installed);
 
-    public static List<ToolItem> ToolingItems()
-    {
-        var rows = new List<ToolItem>();
-        foreach (var (agent,tool) in ToolDatabase.GetTools())
-            rows.Add(new ToolItem(agent, tool.Name, tool.VerifyInstall()));
-        return rows;
-    }
+    public static List<ToolItem> ToolingItems() =>
+        ToolDatabase.GetTools().Select(t => new ToolItem(t.agent, t.tool.Name, t.tool.VerifyInstall())).ToList();
+
+    public record ActionLogItem(string Caller, string Action);
+    public static List<ActionLogItem> ActionDB() =>
+        ActionDatabase.GetAllActions().Select(a => new ActionLogItem(a.caller, a.action)).ToList();
+
     public record ConfigItem(string Name, string Value, string Type);
     public static List<ConfigItem> ConfigItems()
     {

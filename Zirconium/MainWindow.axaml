@@ -10,100 +10,98 @@
         x:Class="Zirconium.MainWindow"
         Title="Zirconium" MinHeight="450" Height="450" MinWidth="600" Width="600">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <Grid x:Name="_SideBar" ZIndex="2" IsVisible="False">
+         <!-- Sidebar -->
+        <Grid x:Name="_SideBar" Grid.ColumnSpan="3" Grid.RowSpan="3" ZIndex="2" IsVisible="False">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="36"/>
             </Grid.ColumnDefinitions>
-
-            <Border Grid.Column="0"
-                    Background="#101015">
-
-                <StackPanel Margin="4"
-                            VerticalAlignment="Top"
-                            Spacing="8">
-
-                    <Button Content="1" Click="SidebarMainChat"/> <!--Main Chat-->
-                    <Button Content="2" Click="SidebarInstalledTools"/> <!--Tooling-->
-                    <Button Content="3" Click="SidebarOrchestrationSchema"/> <!--Orchestration Bubbles-->
-                    <Button Content="4" Click="SidebarCallStack"/> <!--Callstack Enable/Disable-->
-                    <Button Content="5" Click="SidebarRecordLog"/> <!--All Actions Logs-->
-                    <Button Content="6" Click="SidebarConfigSettings"/> <!--Config table-->
-                    <Button Content="&lt;" Click="SidebarCollapse"/> 
-
+            <Border Grid.Column="0" Background="#101015">
+                <StackPanel Margin="4" VerticalAlignment="Top" Spacing="8">
+                    <Button Content="1" Click="SidebarMainChat"/>
+                    <Button Content="2" Click="SidebarInstalledTools"/>
+                    <Button Content="3" Click="SidebarOrchestrationSchema"/>
+                    <Button Content="4" Click="SidebarCallStack"/>
+                    <Button Content="5" Click="SidebarRecordLog"/>
+                    <Button Content="6" Click="SidebarConfigSettings"/>
+                    <Button Content="&lt;" Click="SidebarCollapse"/>
                 </StackPanel>
             </Border>
-            <!-- Page Content Area 
-            <ContentControl x:Name="PageHost"
-                            Grid.Column="1"/>-->
         </Grid>
 
-        <!-- Sidebar -->
-        <Grid ZIndex="1">
+        <Grid Grid.ColumnSpan="3" Grid.RowSpan="3" ZIndex="1">
             <Button x:Name="_SideBarEnable" Content="&gt;" VerticalAlignment="Top" Margin="10" Click="SideBarEnable"/>
         </Grid>
 
-
-        <!--<Grid x:Name="_OG" IsVisible="False">
-            <TextBox x:Name="_Debug" HorizontalAlignment="Left" Margin="49,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="514" AcceptsReturn="True"/>
-            <Button Content="Button" HorizontalAlignment="Center" Margin="0,351,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-            <TextBlock x:Name="_CallStackDisplay" HorizontalAlignment="Left" Margin="591,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="313" Width="178"/>
-        </Grid>-->
-
         <!-- Orchestration Visualization -->
         <Border x:Name="_OrchestrationCanvas"
-            IsVisible="False"
-            Background="Black"
-            ClipToBounds="True"
+            Grid.ColumnSpan="3" Grid.RowSpan="3"
+            IsVisible="False" Background="Black" ClipToBounds="True"
             PointerPressed="Canvas_PointerPressed"
             PointerMoved="Canvas_PointerMoved"
             PointerReleased="Canvas_PointerReleased"
             PointerWheelChanged="Canvas_PointerWheelChanged">
-
-            <Canvas x:Name="_CanvasHost"
-                    Background="Transparent">
+            <Canvas x:Name="_CanvasHost" Background="Transparent">
                 <Canvas.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleX="1" ScaleY="1" />
-                        <TranslateTransform X="0" Y="0" />
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <TranslateTransform X="0" Y="0"/>
                     </TransformGroup>
                 </Canvas.RenderTransform>
             </Canvas>
         </Border>
-    
+
         <!-- Chat -->
-        <Grid x:Name="_MainChat">
+        <Grid x:Name="_MainChat" Grid.ColumnSpan="3" Grid.RowSpan="3">
             <ui:ChatView x:Name="_ChatViewControl"/>
         </Grid>
 
         <!-- Tooling Arsenals -->
-        <Grid x:Name="_ToolView" IsVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="520" MaxHeight="400">
+        <Grid x:Name="_ToolView" Grid.Column="1" Grid.Row="1" IsVisible="False">
             <DataGrid x:Name="_ToolGrid"
-                IsReadOnly="True"
-                GridLinesVisibility="All"
+                IsReadOnly="True" GridLinesVisibility="All"
                 BorderThickness="1" BorderBrush="Gray">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Agent" Binding="{Binding Agent, DataType={x:Type ui:UIBinder+ToolItem}}" Width="2*" />
-                    <DataGridTextColumn Header="Tool" Binding="{Binding Tool, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*" />
-                    <DataGridTextColumn Header="Installed" Binding="{Binding Installed, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*" />
+                    <DataGridTextColumn Header="Agent" Binding="{Binding Agent, DataType={x:Type ui:UIBinder+ToolItem}}" Width="2*"/>
+                    <DataGridTextColumn Header="Tool" Binding="{Binding Tool, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*"/>
+                    <DataGridTextColumn Header="Installed" Binding="{Binding Installed, DataType={x:Type ui:UIBinder+ToolItem}}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- Action Logs -->
+        <Grid x:Name="_RecordLog" Grid.Column="1" Grid.Row="1" IsVisible="False">
+            <DataGrid x:Name="_ActionLogGrid"
+                IsReadOnly="True" GridLinesVisibility="All"
+                BorderThickness="1" BorderBrush="Gray">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Caller" Binding="{Binding Caller, DataType={x:Type ui:UIBinder+ActionLogItem}}" Width="*"/>
+                    <DataGridTextColumn Header="Action" Binding="{Binding Action, DataType={x:Type ui:UIBinder+ActionLogItem}}" Width="2*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
 
         <!-- Config Settings -->
-        <Grid x:Name="_ConfigView" IsVisible="False" HorizontalAlignment="Center" VerticalAlignment="Center" Width="520" MaxHeight="400">
+        <Grid x:Name="_ConfigView" Grid.Column="1" Grid.Row="1" IsVisible="False">
             <DataGrid x:Name="_ConfigGrid"
-                IsReadOnly="True"
-                GridLinesVisibility="All"
+                IsReadOnly="True" GridLinesVisibility="All"
                 BorderThickness="1" BorderBrush="Gray">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="2*" />
-                    <DataGridTextColumn Header="Value" Binding="{Binding Value, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="2*" />
-                    <DataGridTextColumn Header="Type" Binding="{Binding Type, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="*" />
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="2*"/>
+                    <DataGridTextColumn Header="Value" Binding="{Binding Value, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="2*"/>
+                    <DataGridTextColumn Header="Type" Binding="{Binding Type, DataType={x:Type ui:UIBinder+ConfigItem}}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-
-
     </Grid>
 </Window>

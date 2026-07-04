@@ -11,7 +11,7 @@ public static class ToolDatabase
     /// <summary>
     /// Tools are signed by caller
     /// </summary>
-    private static List<(string, Tool)> Tools = new();
+    private static List<(string agent, Tool tool)> Tools = new();
     public static Stack<(ToolAgent, string)> ToolCallStack = new();
     public static void Add(string name, Tool tool) => Tools.Add((name, tool));
     public static void AddRange(string agentName, List<Tool> tools)
@@ -19,7 +19,7 @@ public static class ToolDatabase
         foreach (var t in tools)
             Tools.Add((agentName, t));
     }
-    public static List<(string, Tool)> GetTools() => Tools;
+    public static List<(string agent, Tool tool)> GetTools() => Tools;
     public static List<string> ParseToolCalls(string input)
     {
         var result = new List<string>();
@@ -65,7 +65,7 @@ public static class ToolDatabase
 
     public static async Task<string> CallTool(this ToolAgent agent, string json)
     {
-        ToolCallStack.Push((agent, json)); await UIBinder.CallStackUpdate();
+        ToolCallStack.Push((agent, json)); await UIBinder.CallStackUpdate(); ActionDatabase.RecordAction(agent.Name, json);
         try
         {
             bool isAgentTool = false;
@@ -100,7 +100,8 @@ public static class ToolDatabase
             }
 
             if (result == null)
-                throw new Exception($"Tool call failed after {num_tries} attempts", lastError);
+                return $"Tool call failed after {num_tries} attempts";
+                //throw new Exception($"Tool call failed after {num_tries} attempts", lastError);
 
             return result;
         }

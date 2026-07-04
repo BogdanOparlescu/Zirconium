@@ -5,8 +5,17 @@ namespace Zirconium.Tools;
 
 public static class Commander
 {
+    public static (int exitCode, string stdout, string stderr) RunProcess(string fileName, string arguments, bool bypass_actionDB=false)
+    {
+        var result = RunProcessBlocking(fileName, arguments);
+        if (bypass_actionDB)
+            return result;
+        ActionDatabase.RecordAction($"{fileName} {arguments}", result.ToString());
+        return result;
+    }
 
-    public static (int exitCode, string stdout, string stderr) RunProcess(
+
+    public static (int exitCode, string stdout, string stderr) RunProcessBlocking(
         string fileName,
         string arguments)
     {

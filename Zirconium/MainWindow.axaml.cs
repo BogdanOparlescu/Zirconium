@@ -50,7 +50,7 @@ namespace Zirconium
             _MainChat.IsVisible = true;
             _ToolView.IsVisible = false;
             _OrchestrationCanvas.IsVisible = false;
-            // action records visible false
+            _RecordLog.IsVisible = false;
             _ConfigView.IsVisible = false;
         }
         private void SidebarInstalledTools(object? sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace Zirconium
             _MainChat.IsVisible = false;
             _ToolView.IsVisible = true;
             _OrchestrationCanvas.IsVisible = false;
-            // action records visible false
+            _RecordLog.IsVisible = false;
             _ConfigView.IsVisible = false;
         }
         private void SidebarOrchestrationSchema(object? sender, RoutedEventArgs e)
@@ -66,7 +66,7 @@ namespace Zirconium
             _MainChat.IsVisible = false;
             _ToolView.IsVisible = false;
             _OrchestrationCanvas.IsVisible = true;
-            // action records visible false
+            _RecordLog.IsVisible = false;
             _ConfigView.IsVisible = false;
             if(Orchestra.Instance._Selected != null)
                 UIOrchestraDiagram.Instance.DrawOrchestration(Orchestra.Instance._Selected!);
@@ -75,14 +75,19 @@ namespace Zirconium
             _ChatViewControl.ToggleCallStack();
         private void SidebarRecordLog(object? sender, RoutedEventArgs e)
         {
-
+            _ActionLogGrid.ItemsSource = UIBinder.ActionDB();
+            _MainChat.IsVisible = false;
+            _ToolView.IsVisible = false;
+            _OrchestrationCanvas.IsVisible = false;
+            _RecordLog.IsVisible = true;
+            _ConfigView.IsVisible = false;
         }
         private void SidebarConfigSettings(object? sender, RoutedEventArgs e)
         {
             _MainChat.IsVisible = false;
             _ToolView.IsVisible = false;
             _OrchestrationCanvas.IsVisible = false;
-            // action records visible false
+            _RecordLog.IsVisible = false;
             _ConfigView.IsVisible = true;
         }
             
