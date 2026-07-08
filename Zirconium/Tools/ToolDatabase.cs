@@ -46,7 +46,9 @@ public static class ToolDatabase
 
                 if (depth == 0 && start != -1)
                 {
-                    result.Add(input.Substring(start, i - start + 1));
+                    var block = input.Substring(start, i - start + 1);
+                    if (block.Contains("\"tool_name\""))
+                        result.Add(block);
                     start = -1;
                 }
             }

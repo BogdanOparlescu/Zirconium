@@ -14,4 +14,9 @@ public class Trivy : CodeScanner
     {
         scan_out = Commander.RunProcess(Name, $"filesystem {scan_path}").stdout;
     }
+
+    public void Scan(object scan_path, string s_xyzt328452)
+    {
+        scan_out = Commander.RunProcess(Name, $"filesystem {scan_path}").stdout;
+    }
 }

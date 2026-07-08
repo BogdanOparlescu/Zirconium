@@ -80,7 +80,7 @@ public class UIOrchestraDiagram
         const double ToolSizeRatio = 0.70;
         const double BaseDistance = 240;
         const double DistanceDecay = 0.85;
-        const double MaxArc = Math.PI / 2.5;
+        const double MaxArc = Math.PI / 2;
         const double ArrowHeadSize = 10;
         const double IncomingArrowLength = 140;
         const double MinBubbleDiameter = 55;

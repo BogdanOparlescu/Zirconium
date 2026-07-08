@@ -12,18 +12,27 @@ public class Dig : ReconTool
 
     public override void Scan(object scan)
     {
-        if (scan is (string target, string recordType, List<string> args))
-            Scan(target, recordType, args);
+        if (scan is (string ip, string domain))
+            Scan(ip, domain);
         else
             throw new ArgumentException("Dig Error: Expected target string, (target, recordType), or (target, recordType, args) tuple");
     }
 
-    public void Scan(string target, string recordType = "A", params List<string> arguments)
+    public void Scan(string ip, string domain)
     {
-        string cmd = $"{target} {recordType}";
-        foreach (string arg in arguments)
-            cmd += $" {arg}";
-        var results = Commander.RunProcess(Name, cmd);
+        var results = Commander.RunProcess(Name, $"@{ip} {domain}");
         scan_out = results.stdout;
+    }
+
+    public override bool VerifyInstall()
+    {
+        try
+        {
+            return Commander.RunProcess(Name, "-v", true).exitCode == 0;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
